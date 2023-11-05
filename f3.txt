@@ -1,0 +1,21 @@
+def fractional_knapsack():
+    wt=[]
+    val=[]
+    wt=list(map(int, input("Enter Weight: ").split()))
+    val=list(map(int, input("Enter value: ").split()))
+    c=int(input("enter capacity"))
+    res=0
+   
+    for pair in sorted(zip(wt,val), key= lambda x: x[1]/x[0], reverse=True):
+        if c<=0:
+            break 
+        if pair[0]>c: 
+            res+=int(c*(pair[1]/pair[0]))
+            c=0
+        elif pair[0]<=c:
+            res+=pair[1]
+            c-=pair[0]
+    print(res)        
+
+if __name__=="__main__":
+    fractional_knapsack()
