@@ -1,0 +1,34 @@
+
+def fibonacci(n):
+    if n <= 1:
+        return n, 0
+
+    fib_n_minus_1, steps_1 = fibonacci(n - 1)
+    fib_n_minus_2, steps_2 = fibonacci(n - 2)
+
+    return fib_n_minus_1 + fib_n_minus_2, steps_1 + steps_2 + 1
+
+def generate_fibonacci_series(n):
+    series = []
+    for i in range(n+1):
+        fib_number, _ = fibonacci(i)
+        series.append(fib_number)
+    return series
+
+def main():
+    n = int(input("Enter the index of the Fibonacci number you want to calculate: "))
+
+    fib_number, steps = fibonacci(n)
+    series = generate_fibonacci_series(n)
+
+    print(f"The Fibonacci number at index {n} is: {fib_number}")
+    print(f"Number of steps taken: {steps}")
+    print(f"The Fibonacci series up to index {n} is: {series}")
+
+if __name__ == "__main__":
+    main()
+Enter the index of the Fibonacci number you want to calculate: 4
+The Fibonacci number at index 4 is: 3
+Number of steps taken: 4
+The Fibonacci series up to index 4 is: [0, 1, 1, 2, 3]
+ 
